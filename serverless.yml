@@ -1,0 +1,101 @@
+service: rijwan-user-feature-service
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  logRetentionInDays: ${self:custom.${self:provider.stage}.logRetentionInDays}
+  memorySize: ${self:custom.${self:provider.stage}.memorySize} # optional, in MB, default is 1024
+  timeout: ${self:custom.${self:provider.stage}.timeout} # optional, in seconds, default is 6
+  deploymentBucket: 
+    name: ${self:custom.${self:provider.stage}.deploymentBucketName}
+  stackName: ${self:custom.${self:provider.stage}.stackName}
+  apiName: ${self:custom.${self:provider.stage}.apiName}
+  environment:
+    DYNAMODB_TABLE: user-${opt:stage, self:provider.stage}
+    REGION: ${opt:region, self:provider.region}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+        - dynamodb:UpdateItem
+        - dynamodb:DeleteItem
+      Resource: "arn:aws:dynamodb:${opt:region, self:provider.region}:*:table/${self:provider.environment.DYNAMODB_TABLE}"
+
+custom:
+  dev:
+    region: ${opt:region, 'us-east-1'}
+    logRetentionInDays: 14
+    memorySize: 512
+    timeout: 60
+    deploymentBucketName: rijwan-test
+    stackName: rr-test
+    apiName: rr-demo
+    environment: Dev
+  dynamodb:
+    stages:
+      - dev
+    start:
+      host: localhost
+      port: 8000
+      migrate: true
+      seed: true
+      sharedDb: true
+      dbPath: ${env:HOME}/dynamodb-local
+    seed:
+      domain:
+        sources:
+          - table: ${self:provider.environment.DYNAMODB_TABLE}
+            sources: [sampleData.json]
+
+resources:
+  Resources:
+    UserTable:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE}
+        AttributeDefinitions:
+          - AttributeName: email
+            AttributeType: S
+          - AttributeName: featureName
+            AttributeType: S
+        KeySchema:
+          - AttributeName: email
+            KeyType: HASH
+          - AttributeName: featureName
+            KeyType: RANGE
+        StreamSpecification:
+          StreamViewType: NEW_AND_OLD_IMAGES
+        BillingMode: PAY_PER_REQUEST
+  
+functions:
+  createFeature:
+    handler: app.create
+    events:
+      - http:
+          path: feature
+          method: POST
+          cors: true
+          response:
+            headers:
+              Content-Type: "'application/json'"
+  getFeature:
+    handler: app.get
+    events:
+      - http:
+          path: feature
+          method: GET
+          cors: true
+          response:
+            headers:
+              Content-Type: "'application/json'"
+
+plugins:
+  - serverless-dynamodb-local
+  - serverless-plugin-typescript
+  - serverless-offline
