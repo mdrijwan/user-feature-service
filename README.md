@@ -31,6 +31,12 @@ This project is built on stand alone TypeScript so no compilation needed. But yo
 npm run compile
 ```
 
+Don't forget to install dynamodb local
+
+```
+sls dynamodb install
+```
+
 Then start the server and follow the instructions in the console.
 
 ```
