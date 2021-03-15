@@ -1,0 +1,22 @@
+[
+    {
+        "email": "mrrmmonty@gmail.com",
+        "featureName": "Developer",
+        "enable": true
+    },
+    {
+        "email": "mdrijwan@github.com",
+        "featureName": "Devops",
+        "enable": true
+    },
+    {
+        "email": "tester@test.com",
+        "featureName": "Tester",
+        "enable": true
+    },
+    {
+        "email": "mrrmmonty@gmail.com",
+        "featureName": "Tester",
+        "enable": false
+    }
+]
