@@ -1,0 +1,20 @@
+# Compiled files
+*.js
+
+# IDE - VSCode
+.vscode/*
+
+# Dependency directories
+node_modules/
+
+# Build directories
+.build/*
+
+# DynamoDB directories
+.dynamodb/*
+
+# Serverless directories
+.serverless/*
+
+# OS generated files #
+.DS_Store
