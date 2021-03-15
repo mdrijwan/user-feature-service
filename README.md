@@ -51,6 +51,6 @@ npm run start
   > Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
   
 ##### Demo Screenshot!
-![demo](https://github.com/mdrijwan/user-feature-service/blob/master/sampleRequest.png)
+![demo](https://github.com/mdrijwan/user-feature-service/blob/main/sampleRequest.png)
   
 
