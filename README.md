@@ -62,11 +62,14 @@ npm run start
 >+ Success - status OK (200)
 >+ Failure - Status Not Modified (304)
 
+##### Response Demo!
+![demo](https://github.com/mdrijwan/user-feature-service/blob/main/sampleResponse.png)
+
 - To get user access (`pass the params in query`)
   + GET/features
   + > Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
   
-##### Demo Screenshot!
+##### Request Demo!
 ![demo](https://github.com/mdrijwan/user-feature-service/blob/main/sampleRequest.png)
   
 
