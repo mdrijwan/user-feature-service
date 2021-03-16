@@ -49,6 +49,15 @@ npm run start
 - To create/update user access
   + POST/features
 
+>Example Request:
+```
+{ 
+"featureName": "xxx", (string) 
+"email": "xxx", (string) (user's name) 
+"enable": true|false (boolean) (uses true to enable a user's access
+}
+```
+
 - To see list of countries
   + GET/dev/countries
 
