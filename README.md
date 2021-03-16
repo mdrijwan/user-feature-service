@@ -57,6 +57,9 @@ npm run start
 "enable": true|false (boolean) (uses true to enable a user's access
 }
 ```
+>Example Response:
+- Success - status OK (200)
+- Failure - Status Not Modified (304)
 
 - To get user access (`pass the params in query`)
   + GET/features
