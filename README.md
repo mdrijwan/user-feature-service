@@ -48,8 +48,8 @@ npm run start
 ***Methods***
 - To create/update user access
   + POST/features
+  + >Example Request:
 
->Example Request:
 ```
 { 
 "featureName": "xxx", (string) 
@@ -57,13 +57,14 @@ npm run start
 "enable": true|false (boolean) (uses true to enable a user's access
 }
 ```
+
 >Example Response:
-- Success - status OK (200)
-- Failure - Status Not Modified (304)
+>+ Success - status OK (200)
+>+ Failure - Status Not Modified (304)
 
 - To get user access (`pass the params in query`)
   + GET/features
-> Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
+  + > Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
   
 ##### Demo Screenshot!
 ![demo](https://github.com/mdrijwan/user-feature-service/blob/main/sampleRequest.png)
