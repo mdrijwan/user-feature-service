@@ -63,7 +63,7 @@ npm run start
 
 - To get user access (`pass the params in query`)
   + GET/features
-  > Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
+> Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
   
 ##### Demo Screenshot!
 ![demo](https://github.com/mdrijwan/user-feature-service/blob/main/sampleRequest.png)
