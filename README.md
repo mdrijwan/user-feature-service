@@ -50,13 +50,13 @@ npm run start
   + POST/features
   + >Example Request:
 
-```
-{ 
-"featureName": "xxx", (string) 
-"email": "xxx", (string) (user's name) 
-"enable": true|false (boolean) (uses true to enable a user's access
-}
-```
+    ```
+    { 
+    "featureName": "xxx", (string) 
+    "email": "xxx", (string) (user's name) 
+    "enable": true|false (boolean) (uses true to enable a user's access
+    }
+    ```
 
 >Example Response:
 >+ Success - status OK (200)
