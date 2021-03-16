@@ -58,9 +58,6 @@ npm run start
 }
 ```
 
-- To see list of countries
-  + GET/dev/countries
-
 - To get user access (`pass the params in query`)
   + GET/features
 > Example: GET/localhost:3000/dev/feature?email=tester@test.com&featureName=Tester
